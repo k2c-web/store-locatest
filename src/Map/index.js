@@ -37,7 +37,7 @@ const Map = () => {
      <LoadScript  googleMapsApiKey=''>
        <GoogleMap
           mapContainerStyle={mapStyles}
-          zoom={11}
+          zoom={9}
           center={mapCenter}
         >   {
           markers.map(item => {
