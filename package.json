@@ -1,0 +1,56 @@
+{
+  "name": "cra-sandbox",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@react-google-maps/api": "^2.1.0",
+    "@sitecore-jss/sitecore-jss-react": "^15.0.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "axios": "^0.20.0",
+    "axios-hooks": "^2.1.0",
+    "body-scroll-lock": "^3.1.5",
+    "css-vars-ponyfill": "^2.3.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-google-maps": "^9.4.5",
+    "react-i18next": "^11.7.3",
+    "react-intl": "^5.8.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "robot3": "^0.2.18",
+    "styled-components": "^5.1.1",
+    "styled-normalize": "^8.0.7"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^6.16.0",
+    "@testing-library/user-event": "^7.2.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.1"
+  }
+}

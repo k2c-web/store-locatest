@@ -1,0 +1,54 @@
+import React from "react"
+import { render, fireEvent } from "@testing-library/react"
+import { screen } from "@testing-library/dom"
+import Item from "./"
+import datas from "../Datas"
+let container
+
+beforeEach(() => {
+    container = document.createElement("div")
+    document.body.appendChild(container)
+})
+
+const item = {
+    name: "a1-abcde_1",
+    openingHours: "9AM-12AM 14PM-20PM",
+    position: {
+        lat: "123456",
+        lng: "789012",
+    },
+}
+
+it("Should display the store name with query selector", () => {
+    render(<Item item={item} />)
+    const el = document.querySelector("li h2")
+    expect(el.textContent).toBe("a1-abcde_1")
+})
+
+it("Should display the store name with screen.getByText", () => {
+    render(<Item item={item} />)
+    expect(screen.getByText("a1-abcde_1")).toBeInTheDocument()
+})
+
+it("Should not display the store opening hours", () => {
+    render(<Item item={item} />)
+    const el = document.querySelector("li")
+    const node = el.querySelector(".opening-hours")
+    expect(node).toBeNull()
+})
+
+it("Should display the store opening hours after click", () => {
+    const setActiveIndex = jest.fn()
+    render(<Item item={item} currentIndex={1} setActiveIndex={setActiveIndex} isActive={true} />)
+    fireEvent.click(screen.getByText("a1-abcde_1"))
+    const node = document.querySelector("li .opening-hours")
+    expect(node).not.toEqual(null)
+    expect(node.textContent).toContain("9AM-12AM 14PM-20PM")
+    expect(screen.getByText("9AM-12AM 14PM-20PM")).toBeInTheDocument()
+    expect(setActiveIndex.mock.calls.length).toBe(1)
+})
+
+afterEach(() => {
+    document.body.removeChild(container)
+    container = null
+})
