@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { colors } from "../../style/Colors"
-import { XSmallTitle, Caption, CallToAction } from "../../commons/Text"
+import { colors } from "../style/Colors"
+import { XSmallTitle, Caption, CallToAction } from "../Text"
 
 const Root = styled.div`
     widht: 100%;

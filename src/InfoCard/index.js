@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { MapListContext } from "../../MapListContext"
+import { MapListContext } from "../MapListContext"
 import {
     Root,
     DealerName,
@@ -11,7 +11,7 @@ import {
     GetDirection,
     VisitWebsite
 } from "./styles"
-import { RoundedIcon } from "../../commons/Icon/RoundedIcon" 
+import { RoundedIcon } from "../Icon/RoundedIcon" 
 
 export default React.memo(function ({ item }) {
     const { selectItem, selectedRetailer } = useContext(MapListContext)
@@ -21,7 +21,7 @@ export default React.memo(function ({ item }) {
         <Root activated={item.dealerId === selectedRetailer.dealerId} onClick={() => selectItem(item, "map")}>
                     <DealerDistance>1KM</DealerDistance>
                     <DealerName field={{ value: dealerName }} tag="h2" />
-                    <DealerAffiliation
+                    <DealerAffiliation underlineOff
                         tag="div"
                         field={{ value: dealerAffiliate ? "Official Matchbox Affiliate" : "Official Matchbox Retailer" }}
                     />

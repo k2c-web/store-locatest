@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { colors } from "../../style/Colors/index"
+import { colors } from "../style/Colors/index"
 const revertibles = ["externalLink"] // RTL
 
 export const IconSvg = styled.svg`

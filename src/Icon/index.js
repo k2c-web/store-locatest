@@ -1,6 +1,6 @@
 import React from "react"
 import { IconSvg } from "./styles"
-import { colors } from "../../style/Colors"
+import { colors } from "../style/Colors"
 
 const DropDownIcon = (props) => (
     <IconSvg

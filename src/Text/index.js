@@ -1,5 +1,5 @@
 import React from "react"
-import { colors } from "../../style/Colors/index"
+import { colors } from "../style/Colors"
 import { RichText } from "@sitecore-jss/sitecore-jss-react"
 import styled, { css } from "styled-components"
 

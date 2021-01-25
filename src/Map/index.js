@@ -1,10 +1,8 @@
 import React, {useContext} from 'react';
-import InfoCard from './InfoCard'
+import InfoCard from '../InfoCard'
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api'
 import { MapListContext } from "../MapListContext"
-
-
-//import { RoundedIcon } from "../commons/Icon/RoundedIcon" 
+//import { RoundedIcon } from "../Icon/RoundedIcon" 
 //<RoundedIcon type="location" onClick={() => selectItem(item, "map")}/>
 
 const Map = () => {
@@ -44,10 +42,10 @@ const Map = () => {
         >   {
           markers.map(item => {
             return (
-            <Marker key={item.nameTranslated} position={item.location} onClick={() => selectItem(item, "gmap")}>  
-            {item.dealerId === selectedRetailer.dealerId && <InfoWindow onCloseClick={() => selectItem(item, "close")}>
+            <Marker type="location" key={item.nameTranslated} position={{lat: item.lat, lng: item.lng}} onClick={() => selectItem(item, "gmap")}>  
+              {item.dealerId === selectedRetailer.dealerId && (<InfoWindow onCloseClick={() => selectItem(item, "close")}>
             <InfoCard item={item}/>
-        </InfoWindow>}
+        </InfoWindow>)}
         </Marker>
             )
           })

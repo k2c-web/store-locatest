@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { colors } from "../../style/Colors"
+import { colors } from "../style/Colors"
 
 import { PhoneIcon, GetDirectionIcon, ExternalLinkIcon, LocationIcon, PlusIcon } from "./"
 
