@@ -59,7 +59,7 @@ export default [
       nameTranslated: "Store 717",
       hoursTranslated: "Mon-Sun: 10:00am - 7:00pm<br/>",
       dealerId: 717,
-      lng: 2.53483369999999,
+      lng: 2.34483699599999,
       lat: 48.7627606,
   },
   {
@@ -136,15 +136,24 @@ export default [
   nameTranslated: "Store 729",
   hoursTranslated: "Mon-Sun: 10:00am - 7:00pm<br/>",
   dealerId: 729,
-  lng: 8.93483369999999,
+  lng: 2.53483369999999,
   lat: 40.8622606,
 },
 {
   nameTranslated: "Store 730",
   hoursTranslated: "Mon-Sun: 10:00am - 7:00pm<br/>",
   dealerId: 730,
-  lng: 6.93483369999999,
-  lat: 45.8622606,
+  lng: 2.77483369999999,
+  lat: 46.8622606,
+},
+{
+  nameTranslated: "Store 731",
+  lng: 2.777575869682096,
+  lat: 48.87490742593591,
+  hoursTranslated: "Mon-Sat: 8:00am - 7:00pm<br/>Sun: 8:00am - 6:00pm<br/>",
+  openingDetail: "",
+  phone1: "0160423285",
+  dealerId: 731,
 },
 
 

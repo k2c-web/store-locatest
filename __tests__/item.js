@@ -27,7 +27,7 @@ describe("Component <Item />", () => {
         expect(selectItem).toHaveBeenCalledWith(index, item, clickOrigin)
     })
 
-    it("should display opening hours on selected state", () => {
+    it.skip("should display opening hours on selected state", () => {
         activeIndex = 0
         const localWrapper = mount(
             <Item selected={index === activeIndex} index={index} item={item} selectItem={selectItem} />
