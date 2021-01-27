@@ -3,17 +3,16 @@ import { getMediaQuery, sizes } from "../style/Breakpoint"
 const mobileMaxWidth = `${sizes.s.max}px`
 
 export const Root = styled.div`
-    display: flex;
-    width: 100%;
-
     @media ${getMediaQuery("xs")}, ${getMediaQuery("s")} {
-        flex-flow: column-reverse;
-        align-items: center;
-        justify-content: center;
+        width: 100%;
+        height: 400px;
+        position: sticky;
+        top: 0;
+        left: 0;
     }
-
     @media ${getMediaQuery("m")}, ${getMediaQuery("l")}, ${getMediaQuery("xl")} {
-        height: 80vh;
-        padding: 5vh 5vw;
+        position: relative;
+        width: 100%;
+        height: 100%;
     }
 `

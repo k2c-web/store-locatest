@@ -34,7 +34,7 @@ const DealerAdress = styled(Caption)`
     color: ${colors.blackDark};
 `
 
-const OpeningHoursSection = styled.p`
+const OpeningHoursSection = styled.div`
     color: ${colors.blackDark};
     padding: 0;
     margin: 0;

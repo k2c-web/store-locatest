@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from "react"
 import { MapListContext } from "../MapListContext"
 import { DropDownIcon } from "../Icon"
+import smoothscroll from 'smoothscroll-polyfill';
 import {
     Root,
     DealerName,
@@ -15,17 +16,24 @@ import {
 
 import {RoundedIcon} from '../Icon/RoundedIcon'
 
+ 
+// kick off the polyfill!
+smoothscroll.polyfill();
+
 export default React.memo(function ({ item }) {
     const [displayOpeningHours, setDisplayOpeningHours] = useState(false)
     const rootRef = useRef()
     const value = useContext(MapListContext)
-    const { selectItem, selectedRetailer } = value
+    const { selectItem,  selectedFrom, selectedRetailer } = value
     const dealerName = item.nameTranslated
     const dealerAffiliate = !!item.affiliate
 
     useEffect(() => {
-        if(rootRef.current && dealerName === selectedRetailer.nameTranslated) {
-            rootRef.current.parentElement.scrollTop = rootRef.current.offsetTop - rootRef.current.getBoundingClientRect().height
+        if(rootRef.current && selectedFrom === "map" && dealerName === selectedRetailer.nameTranslated) {
+          
+            const top = rootRef.current.offsetTop - rootRef.current.getBoundingClientRect().height
+             //window.requestAnimationFrame(() => window.scrollTo({ top, left: 0, behavior: 'smooth' }))
+            rootRef.current.parentElement.scrollTop = top 
         }
     }, [rootRef, selectedRetailer])
 
@@ -59,7 +67,6 @@ export default React.memo(function ({ item }) {
                     />
                     <DropDownIcon />
                 </OpeningHoursSection>
-
                 {displayOpeningHours && (
                     <OpeningHours className="opening-hours-section" 
                         tag="div"

@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { colors } from "../style/Colors"
 
-import { PhoneIcon, GetDirectionIcon, ExternalLinkIcon, LocationIcon, PlusIcon } from "./"
+import { PhoneIcon, GetDirectionIcon, ExternalLinkIcon, LocationIcon, PlusIcon, ArrowRight } from "./"
 
 const RoundedBtn = styled.div`
     margin: 0;
@@ -24,7 +24,8 @@ const mapType = {
     getDirection: <GetDirectionIcon />,
     externalLink: <ExternalLinkIcon />,
     location: <LocationIcon />,
-    plus: <PlusIcon />
+    plus: <PlusIcon />,
+    arrowRight: <ArrowRight />,
 }
 
 export const RoundedIcon = ({ type = "phone", label, ...rest }) => {

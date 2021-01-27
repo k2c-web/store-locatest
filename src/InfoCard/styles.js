@@ -1,9 +1,10 @@
 import styled from "styled-components"
 import { colors } from "../style/Colors"
 import { XSmallTitle, Caption, CallToAction } from "../Text"
+import { getMediaQuery } from "../style/Breakpoint"
 
 const Root = styled.div`
-    widht: 100%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-flow: column;
@@ -30,7 +31,6 @@ const DealerDistance = styled.div`
     right: 26px;
 `
 
-
 const PhoneNumber = styled.div`
     display: flex;
     align-items: center;
@@ -47,6 +47,12 @@ const ViewDetails = styled.div`
     border: 1px solid ${colors.greyMedium};
     border-radius: 20px;
 `
+
+const ViewGroup = styled.div`
+    display: flex;
+    align-items: center;
+`
+
 const GetDirection = styled.div`
     display: flex;
     align-items: center;
@@ -66,4 +72,5 @@ export {
     ViewDetails,
     GetDirection,
     VisitWebsite,
+    ViewGroup,
 }

@@ -1,7 +1,31 @@
-import React from "react"
+import React, { dangerouslySetInnerHTML } from "react"
 import { colors } from "../style/Colors"
-import { RichText } from "@sitecore-jss/sitecore-jss-react"
 import styled, { css } from "styled-components"
+
+const TdrText = (props) => {
+    if (!props.tag) {
+        console.error(`Text component called without the "tag" props, please provide one (ex: h1, p, span, ...)`)
+    }
+    if (
+        !!props.field &&
+        typeof props.field === "object" &&
+        props.field !== null &&
+        !!props.field.value &&
+        props.field.value !== ""
+    ) {
+        return React.createElement(props.tag, {
+            href: props.href,
+            onClick: props.onClick,
+            field: props.field,
+            tag: props.tag,
+            className: props.className,
+            dir: props.direction,
+            dangerouslySetInnerHTML: { __html: props.field.value },
+        })
+    } else {
+        return null
+    }
+}
 
 export const BigTitleCss = css`
     font-family: var(--font-meta-headline-black);
@@ -237,32 +261,6 @@ export const StyledLinkCss = css`
     letter-spacing: 0.05em;
     color: ${colors.blackDark};
 `
-
-const TdrText = (props) => {
-    if (!props.tag) {
-        console.error(`Text component called without the "tag" props, please provide one (ex: h1, p, span, ...)`)
-    }
-    if (
-        !!props.field &&
-        typeof props.field === "object" &&
-        props.field !== null &&
-        !!props.field.value &&
-        props.field.value !== ""
-    ) {
-        return (
-            <RichText
-                href={props.href}
-                onClick={props.onClick}
-                field={props.field}
-                tag={props.tag}
-                className={props.className}
-                dir={props.direction}
-            />
-        )
-    } else {
-        return null
-    }
-}
 
 export const BigTitle = styled(TdrText)`
     ${BigTitleCss}

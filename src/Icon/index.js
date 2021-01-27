@@ -85,8 +85,24 @@ const LocationIcon = (props) => (
         role="img"
         onClick={props.onClick}
     >
-        <path d="m10.5 0c-1 0-1.9.2-2.8.6-2.4 1.1-4 3.4-4 6.2v.3.3c.1 1.4.5 2.7 1.2 3.9 1 1.7 5.6 9.7 5.6 9.7s4.3-7.4 5.5-9.6c.8-1.5 1.3-2.8 1.3-4.6 0-3.7-3.1-6.8-6.8-6.8zm4.7 6.8c0 2.6-2.1 4.8-4.8 4.8s-4.7-2.2-4.7-4.8c0-2.7 2.2-4.8 4.8-4.8s4.7 2.1 4.7 4.8z" id="location" />
+        <path
+            d="m10.5 0c-1 0-1.9.2-2.8.6-2.4 1.1-4 3.4-4 6.2v.3.3c.1 1.4.5 2.7 1.2 3.9 1 1.7 5.6 9.7 5.6 9.7s4.3-7.4 5.5-9.6c.8-1.5 1.3-2.8 1.3-4.6 0-3.7-3.1-6.8-6.8-6.8zm4.7 6.8c0 2.6-2.1 4.8-4.8 4.8s-4.7-2.2-4.7-4.8c0-2.7 2.2-4.8 4.8-4.8s4.7 2.1 4.7 4.8z"
+            id="location"
+        />
     </IconSvg>
 )
 
-export { PlusIcon, DropDownIcon, PhoneIcon, GetDirectionIcon, ExternalLinkIcon, LocationIcon }
+const ArrowRight = (props) => (
+    <IconSvg
+        height={21}
+        width={21}
+        viewBox={"0 0 21 21"}
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        onClick={props.onClick}
+    >
+        <path d="m11 5.5-4.3 4.2-1.4-1.5 1.8-1.7h-7.1v-2h7.1l-1.8-1.7 1.4-1.4z" id="location" />
+    </IconSvg>
+)
+
+export { PlusIcon, DropDownIcon, PhoneIcon, GetDirectionIcon, ExternalLinkIcon, LocationIcon, ArrowRight }
