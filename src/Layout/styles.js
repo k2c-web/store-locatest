@@ -4,7 +4,6 @@ const mobileMaxWidth = `${sizes.s.max}px`
 
 export const Root = styled.div`
     display: flex;
-    width: 100%;
 
     @media ${getMediaQuery("xs")}, ${getMediaQuery("s")} {
         flex-flow: column-reverse;
