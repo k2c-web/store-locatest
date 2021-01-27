@@ -20,6 +20,7 @@ if(navigator.geolocation)
 };*/
 
 const Map = () => {
+    const { retailers, selectedRetailer, selectItem, displayLoader } = useContext(MapListContext)
     const refCenter = useRef()
 
     // Load the Google maps scripts
@@ -27,13 +28,11 @@ const Map = () => {
         googleMapsApiKey: "AIzaSyDLBYFZ20ju_3sSKYtbjolEscpnPGGuVnI",
     })
 
-    const { retailers, selectedRetailer, selectItem, displayLoader } = useContext(MapListContext)
-
     const [map, setMap] = React.useState(null)
     // Use fitbounds to display a map covering all the markers
-    const onLoad = (map) => {
+    const onLoad = useCallback((map) => {
         setMap(map)
-    }
+    })
 
     useEffect(() => {
         if (map && retailers.length) {
@@ -46,14 +45,17 @@ const Map = () => {
         }
     }, [map, retailers])
 
-    const handleCenterChange = () => {
+    const handleCenterChange = useCallback(() => {
         const newCenter = map.getCenter()
         refCenter.current = newCenter.toJSON()
-    }
+    })
 
-    const handleClick = (item) => {
-        selectItem(item, "map")
-    }
+    const handleClick = useCallback((e) => {
+        if (e.target === e.currentTarget) {
+            selectItem({}, "map")
+        }
+    })
+
     return (
         <Root>
             {retailers && isLoaded && (
@@ -68,15 +70,14 @@ const Map = () => {
                     onCenterChanged={handleCenterChange}
                     onClick={handleClick}
                 >
-                    {!!map &&
-                        !!retailers.length &&
+                    {!!retailers.length &&
                         retailers.map((item) => {
                             return (
                                 <Marker
                                     type="location"
                                     key={item.nameTranslated}
                                     position={{ lat: item.lat, lng: item.lng }}
-                                    onClick={() => handleClick(item, "map")}
+                                    onClick={() => selectItem(item, "map")}
                                 >
                                     {item.dealerId === selectedRetailer.dealerId && (
                                         <InfoWindow
