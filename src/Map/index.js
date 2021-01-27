@@ -18,7 +18,6 @@ if(navigator.geolocation)
         }
     )
 };*/
-
 const Map = () => {
     // Load the Google maps scripts
     const { isLoaded } = useJsApiLoader({
@@ -52,24 +51,32 @@ const Map = () => {
               lat: selectedRetailer.lat,
           }
         : defaultCenter
-    //const [map, setMap] = React.useState(null)
+
+    const [map, setMap] = React.useState(null)
     const currentMap = useRef()
-    const onLoad = React.useCallback(function callback(map) {
-        const bounds = new window.google.maps.LatLngBounds()
-        retailers.forEach((item) => {
-            bounds.extends(item.location)
-            return item.dealerId
-        })
-        //map.fitBounds(bounds)
-        currentMap.current = map
-    }, [])
+    const onLoad = React.useCallback(
+        function callback(map) {
+            if (retailers.length > 0) {
+                const bounds = new window.google.maps.LatLngBounds()
+                console.log("gmap retailers", retailers)
+                const tmp = retailers.map((item) => {
+                    console.log("gmap item", item)
+                    bounds.extend(item.location)
+                    //return item.dealerId
+                })
+                map.fitBounds(bounds)
+                setMap(map)
+            }
+        },
+        [retailers]
+    )
 
     const onUnmount = React.useCallback(function callback(map) {
-        currentMap.current(null)
+        setMap(null)
     }, [])
 
     return (
-        <Root>
+        <Root show={retailers}>
             {isLoaded && (
                 <GoogleMap
                     mapContainerStyle={mapStyles}

@@ -3,6 +3,8 @@ import { getMediaQuery, sizes } from "../style/Breakpoint"
 const mobileMaxWidth = `${sizes.s.max}px`
 
 export const Root = styled.div`
+    opacity: ${(props) => (props.show ? "1" : "0")};
+    transition: opacity 300ms;
     @media ${getMediaQuery("xs")}, ${getMediaQuery("s")} {
         width: 100%;
         height: 400px;
