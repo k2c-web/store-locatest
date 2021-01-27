@@ -1,6 +1,6 @@
-import React, { useContext, useRef } from "react"
+import React, { useState, useContext, useRef, useEffect, useCallback } from "react"
 import InfoCard from "../InfoCard"
-import { GoogleMap, useJsApiLoader, Marker, InfoWindow } from "@react-google-maps/api"
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api"
 import { MapListContext } from "../MapListContext"
 import { Root } from "./styles"
 
@@ -20,84 +20,76 @@ if(navigator.geolocation)
 };*/
 
 const Map = () => {
+    const refCenter = useRef()
+
     // Load the Google maps scripts
-    const { isLoaded } = useJsApiLoader({
-        id: "google-map-script",
+    const { isLoaded } = useLoadScript({
         googleMapsApiKey: "AIzaSyDLBYFZ20ju_3sSKYtbjolEscpnPGGuVnI",
     })
 
-    const { retailers, selectedRetailer, selectItem } = useContext(MapListContext)
+    const { retailers, selectedRetailer, selectItem, displayLoader } = useContext(MapListContext)
 
-    const markers = retailers.map((item) => ({
-        ...item,
-        location: {
-            lat: item.lat,
-            lng: item.lng,
-        },
-    }))
-
-    const mapStyles = {
-        height: "100%",
-        width: "100%",
+    const [map, setMap] = React.useState(null)
+    // Use fitbounds to display a map covering all the markers
+    const onLoad = (map) => {
+        setMap(map)
     }
 
-    const defaultCenter = {
-        lng: 2.777575869682096,
-        lat: 48.85490742593591,
+    useEffect(() => {
+        if (map && retailers.length) {
+            const bounds = new window.google.maps.LatLngBounds()
+            retailers.forEach((item) => {
+                bounds.extend({ lat: item.lat, lng: item.lng })
+                return item.dealerId
+            })
+            map.fitBounds(bounds)
+        }
+    }, [map, retailers])
+
+    const handleCenterChange = () => {
+        const newCenter = map.getCenter()
+        refCenter.current = newCenter.toJSON()
     }
 
-    const mapCenter = selectedRetailer.lng
-        ? {
-              lng: selectedRetailer.lng,
-              lat: selectedRetailer.lat,
-          }
-        : defaultCenter
-    //const [map, setMap] = React.useState(null)
-    const currentMap = useRef()
-    const onLoad = React.useCallback(function callback(map) {
-        const bounds = new window.google.maps.LatLngBounds()
-        retailers.forEach((item) => {
-            bounds.extends(item.location)
-            return item.dealerId
-        })
-        //map.fitBounds(bounds)
-        currentMap.current = map
-    }, [])
-
-    const onUnmount = React.useCallback(function callback(map) {
-        currentMap.current(null)
-    }, [])
-
+    const handleClick = (item) => {
+        selectItem(item, "map")
+    }
     return (
         <Root>
-            {isLoaded && (
+            {retailers && isLoaded && (
                 <GoogleMap
-                    mapContainerStyle={mapStyles}
+                    mapContainerStyle={{
+                        height: "100%",
+                        width: "100%",
+                    }}
                     zoom={10}
                     onLoad={onLoad}
-                    onUnmount={onUnmount}
-                    center={defaultCenter}
+                    center={refCenter.current}
+                    onCenterChanged={handleCenterChange}
+                    onClick={handleClick}
                 >
-                    {markers.map((item) => {
-                        return (
-                            <Marker
-                                type="location"
-                                key={item.nameTranslated}
-                                position={{ lat: item.lat, lng: item.lng }}
-                                onClick={() => selectItem(item, "map")}
-                            >
-                                {item.dealerId === selectedRetailer.dealerId && (
-                                    <InfoWindow
-                                        position={{ lat: selectedRetailer.lat, lng: selectedRetailer.lng }}
-                                        visible={item.dealerId === selectedRetailer.dealerId}
-                                        onCloseClick={() => selectItem(item, "close")}
-                                    >
-                                        <InfoCard item={item} />
-                                    </InfoWindow>
-                                )}
-                            </Marker>
-                        )
-                    })}
+                    {!!map &&
+                        !!retailers.length &&
+                        retailers.map((item) => {
+                            return (
+                                <Marker
+                                    type="location"
+                                    key={item.nameTranslated}
+                                    position={{ lat: item.lat, lng: item.lng }}
+                                    onClick={() => handleClick(item, "map")}
+                                >
+                                    {item.dealerId === selectedRetailer.dealerId && (
+                                        <InfoWindow
+                                            position={{ lat: item.lat, lng: item.lng }}
+                                            visible={item.dealerId === selectedRetailer.dealerId}
+                                            onCloseClick={() => selectItem({}, "close")}
+                                        >
+                                            <InfoCard item={item} />
+                                        </InfoWindow>
+                                    )}
+                                </Marker>
+                            )
+                        })}
                 </GoogleMap>
             )}
         </Root>
