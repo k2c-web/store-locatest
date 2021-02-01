@@ -6,20 +6,50 @@ import { getMediaQuery } from "../style/Breakpoint"
 const Root = styled.div`
     width: 276px;
     height: 336px;
-    box-sizing: border-box;
     display: flex;
     flex-flow: column;
     background: white;
-    padding: 30px;
+    padding: 30px 30px 18px 30px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 6px 12px 0px;
     @media ${getMediaQuery("xs")} {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
+        width: 100%;
+        height: 100%;
         align-items: center;
         justify-content: center;
     }
+`
+const CloseButtonContainer = styled.div`
+    height: 34px;
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    @media ${getMediaQuery("xs")} {
+        display: flex;
+    }
+`
+
+const CloseButton = styled.button`
+    border: none;
+    outline: none;
+    padding: 0;
+    height: 34px;
+    line-height: 34px;
+    width: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: ${colors.red};
+    color: ${colors.white};
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
 `
 
 const DealerName = styled(XSmallTitle)`
@@ -33,32 +63,36 @@ const DealerAffiliation = styled(XSmallTitle)`
 
 const DealerAdress = styled(Caption)`
     color: ${colors.blackDark};
+    margin: 0;
+    margin-bottom: 12px;
 `
 
 const DealerDistance = styled(CaptionBold)`
     font-size: 12px;
     margin: 0;
     padding: 0;
-    position: absolute;
-    top: 6px;
-    right: 26px;
+    text-align: right;
+    margin-bottom: 6px;
 `
 
 const PhoneNumber = styled.div`
     display: flex;
     align-items: center;
+    margin: 0;
+    margin-bottom: 12px;
 `
 
-const ViewDetails = styled.div`
-    width: 80%;
-    height: 30px;
-    bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+const ViewDetails = styled.button`
+    background: none;
+    display: block;
+    text-align: center;
     color: ${colors.red};
     border: 1px solid ${colors.greyMedium};
-    border-radius: 20px;
+    border-radius: 25px;
+    height: 34px;
+    &:hover {
+        color: rgb(190, 1, 0);
+    }
 `
 
 const ViewGroup = styled.div`
@@ -69,14 +103,18 @@ const ViewGroup = styled.div`
 const GetDirection = styled.div`
     display: flex;
     align-items: center;
+    margin-bottom: 12px;
 `
 const VisitWebsite = styled.div`
     display: flex;
     align-items: center;
+    margin-bottom: 26px;
 `
 
 export {
     Root,
+    CloseButton,
+    CloseButtonContainer,
     DealerAdress,
     DealerAffiliation,
     DealerDistance,
