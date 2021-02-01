@@ -1,16 +1,18 @@
 import styled from "styled-components"
 import { colors } from "../style/Colors"
-import { XSmallTitle, Caption, CallToAction } from "../Text"
+import { XSmallTitle, Caption, CallToAction, CaptionBold } from "../Text"
+import { getMediaQuery } from "../style/Breakpoint"
 
 const Root = styled.li`
+    box-sizing: border-box;
     position: relative;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 10px;
+    padding: 30px 20px;
     width: 100%;
-    border-bottom: 2px solid black;
+    border-bottom: 4px solid rgb(190, 1, 0);
     background-color: ${(props) => (props.activated ? colors.lightGrey : colors.white)};
     border-color: ${(props) => (props.activated ? colors.red : colors.greyMedium)};
     cursor: pointer;
@@ -19,19 +21,23 @@ const Root = styled.li`
     &:hover {
         background-color: ${colors.lightGrey};
     }
+    @media ${getMediaQuery("xs")} {
+        padding: 14px 5vw;
+    }
 `
 
 const DealerName = styled(XSmallTitle)`
     margin: 0;
     padding: 0;
 `
-const DealerAffiliation = styled(CallToAction)`
+const DealerAffiliation = styled(XSmallTitle)`
     color: ${colors.red};
-    text-transform: uppercase;
+    font-size: 10px;
 `
 
 const DealerAdress = styled(Caption)`
     color: ${colors.blackDark};
+    font-size: 14px;
 `
 
 const OpeningHoursSection = styled.div`
@@ -42,29 +48,36 @@ const OpeningHoursSection = styled.div`
     align-items: center;
     justify-content: space-between;
 `
+
+const todayOpeningHours = styled(Caption)`
+    font-size: 14px;
+    color: ${colors.blackDark};
+`
+
 const OpeningHours = styled(Caption)`
     color: ${colors.blackDark};
     padding: 0;
     margin: 10px 0 0 0;
 `
 
-const OpeningHoursToggle = styled(Caption)`
+const OpeningHoursToggleLabel = styled(Caption)`
     margin: 0;
     padding: 0;
 `
 
-const DealerDistance = styled.div`
+const DealerDistance = styled(CaptionBold)`
+    font-size: 12px;
     margin: 0;
     padding: 0;
     position: absolute;
-    top: 6px;
-    right: 26px;
+    top: 30px;
+    right: 20px;
 `
 
 const RoundedBtn = styled.div`
     position: absolute;
-    bottom: 10px;
-    right: 26px;
+    bottom: 30px;
+    right: 20px;
     cursor: pointer;
 `
 
@@ -75,7 +88,8 @@ export {
     DealerAffiliation,
     DealerAdress,
     OpeningHoursSection,
-    OpeningHoursToggle,
+    OpeningHoursToggleLabel,
+    todayOpeningHours,
     DealerDistance,
     RoundedBtn,
 }

@@ -10,13 +10,13 @@ export const Root = styled.ul`
     padding: 0;
     ${noScrolbarMixin};
     background-color: ${colors.white};
-    @media ${getMediaQuery("xs")}, ${getMediaQuery("s")} {
+    @media ${getMediaQuery("xs")} {
         width: 100%;
         height: 100%;
     }
-    @media ${getMediaQuery("m")}, ${getMediaQuery("l")}, ${getMediaQuery("xl")} {
+    @media ${getMediaQuery("m")}, ${getMediaQuery("l")}, ${getMediaQuery("xl")}, ${getMediaQuery("s")} {
         height: 100%;
-        width: 280px;
-        margin: 0 40px 0 0;
+        width: calc(30% - 5vw);
+        margin: 0;
     }
 `

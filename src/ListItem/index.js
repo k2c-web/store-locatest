@@ -9,7 +9,7 @@ import {
     OpeningHoursSection,
     OpeningHours,
     DealerAdress,
-    OpeningHoursToggle,
+    OpeningHoursToggleLabel,
     DealerDistance,
     RoundedBtn,
 } from "./styles"
@@ -28,12 +28,9 @@ export default React.memo(function ({ item }) {
     const dealerAffiliate = !!item.affiliate
 
     useEffect(() => {
+        // Scrol intoview the selected item of the list
         if (rootRef.current && selectedFrom === "map" && dealerName === selectedRetailer.nameTranslated) {
-            const top = rootRef.current.offsetTop - rootRef.current.getBoundingClientRect().height
-            window.requestAnimationFrame(
-                //rootRef.current.parentElement.scrollTop = top
-                () => rootRef.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
-            )
+            rootRef.current.scrollIntoView({ behavior: "instant", block: "start" })
         }
     }, [rootRef, selectedRetailer])
 
@@ -65,7 +62,7 @@ export default React.memo(function ({ item }) {
             />
             <div>
                 <OpeningHoursSection>
-                    <OpeningHoursToggle
+                    <OpeningHoursToggleLabel
                         tag="div"
                         field={{ value: "Opening Hours" }}
                         className="opening-hours-section"
@@ -76,7 +73,9 @@ export default React.memo(function ({ item }) {
                     <OpeningHours className="opening-hours-section" tag="div" field={{ value: item.hoursTranslated }} />
                 )}
             </div>
-            <DealerDistance>1KM</DealerDistance>
+            <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }}>
+                1KM
+            </DealerDistance>
             <RoundedBtn>
                 <RoundedIcon type="plus" />
             </RoundedBtn>

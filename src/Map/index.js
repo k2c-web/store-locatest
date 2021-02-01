@@ -3,9 +3,10 @@ import InfoCard from "../InfoCard"
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from "@react-google-maps/api"
 import { MapListContext } from "../MapListContext"
 import { Root } from "./styles"
-
+import { isBrowser } from "../utils"
+import { sizes } from "../style/Breakpoint"
 //import { RoundedIcon } from "../Icon/RoundedIcon"
-//<RoundedIcon type="location" onClick={() => selectItem(item, "map")}/>
+//<RoundedIcon key={item.dealerId} text={item.nameTranslated} lat={item.location.lat} lng={item.location.lng} type="location" onClick={() => selectItem(item, "map")}/>
 
 /*const long;
 cont lati;
@@ -18,6 +19,7 @@ if(navigator.geolocation)
         }
     )
 };*/
+const mobileMaxWidth = `${sizes.xs.max}px`
 
 const Map = () => {
     const { retailers, selectedRetailer, selectItem, displayLoader } = useContext(MapListContext)
@@ -47,13 +49,31 @@ const Map = () => {
         }
     }, [map, retailers])
 
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+        if (isBrowser) {
+            const matchQuery = (x) => {
+                if (x.matches) {
+                    setIsMobile(true)
+                } else {
+                    setIsMobile(false)
+                }
+            }
+            const match = window.matchMedia(`(max-width: ${mobileMaxWidth})`)
+            match.addListener(matchQuery)
+            matchQuery(match)
+            return () => match.removeListener(matchQuery)
+        }
+    }, [])
+
     const handleCenterChange = useCallback(() => {
         const newCenter = map.getCenter()
         refCenter.current = newCenter.toJSON()
     })
 
     const handleZoomChanged = useCallback(() => {
-        if (map) console.log(map.getZoom())
+        if (map) console.log(map.getBounds())
     })
 
     const onMapClick = useCallback((e) => {
@@ -64,8 +84,6 @@ const Map = () => {
 
     const onMarkerClick = useCallback((e, item) => selectItem(item, "map"))
 
-    const onChange = useCallback(() => console.log("changes"))
-
     return (
         <Root>
             {retailers && isLoaded && (
@@ -74,6 +92,7 @@ const Map = () => {
                         height: "100%",
                         width: "100%",
                     }}
+                    onIdle={() => console.log("idled")}
                     onLoad={onLoad}
                     center={refCenter.current}
                     onCenterChanged={handleCenterChange}
@@ -89,7 +108,7 @@ const Map = () => {
                                     position={{ lat: item.lat, lng: item.lng }}
                                     onClick={() => selectItem(item, "map")}
                                 >
-                                    {item.dealerId === selectedRetailer.dealerId && (
+                                    {item.dealerId === selectedRetailer.dealerId && !isMobile && (
                                         <InfoWindow
                                             position={{ lat: item.lat, lng: item.lng }}
                                             visible={item.dealerId === selectedRetailer.dealerId}
@@ -103,6 +122,8 @@ const Map = () => {
                         })}
                 </GoogleMap>
             )}
+
+            {isMobile && selectedRetailer.dealerId && <InfoCard theme="mobile" item={selectedRetailer} />}
         </Root>
     )
 }

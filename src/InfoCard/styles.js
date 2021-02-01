@@ -8,6 +8,16 @@ const Root = styled.div`
     height: 100%;
     display: flex;
     flex-flow: column;
+    background: white;
+    @media ${getMediaQuery("xs")} {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        align-items: center;
+        justify-content: center;
+    }
 `
 
 const DealerName = styled(XSmallTitle)`
