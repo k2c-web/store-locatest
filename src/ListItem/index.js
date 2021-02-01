@@ -47,7 +47,7 @@ export default React.memo(function ({ item }) {
                 <DealerName field={dealerName} tag="h2" />
                 <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }} />
             </FlexBox>
-            <DealerAffiliation  tag="div" field={{dealerAffiliationLabel }} />
+            <DealerAffiliation  tag="div" field={dealerAffiliationLabel} />
             <DealerAdress tag="div"field={adressLabel} />
             <FlexBox> <Openings value={item.hoursTranslated} />
             <RoundedBtn type="plus" /></FlexBox>
