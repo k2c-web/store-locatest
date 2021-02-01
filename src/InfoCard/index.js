@@ -24,7 +24,9 @@ export default React.memo(function ({ item }) {
     return (
         <RemoveScroll enabled={isMobile && item.dealerId === selectedRetailer.dealerId}>
             <Root activated={item.dealerId === selectedRetailer.dealerId} onClick={() => selectItem(item, "map")}>
-                <DealerDistance>1KM</DealerDistance>
+                <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }}>
+                    1KM
+                </DealerDistance>
                 <DealerName field={{ value: dealerName }} tag="h2" />
                 <DealerAffiliation
                     underlineOff

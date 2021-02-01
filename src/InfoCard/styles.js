@@ -1,14 +1,16 @@
 import styled from "styled-components"
 import { colors } from "../style/Colors"
-import { XSmallTitle, Caption, CallToAction } from "../Text"
+import { XSmallTitle, Caption, CallToAction, CaptionBold } from "../Text"
 import { getMediaQuery } from "../style/Breakpoint"
 
 const Root = styled.div`
-    width: 100%;
-    height: 100%;
+    width: 276px;
+    height: 336px;
+    box-sizing: border-box;
     display: flex;
     flex-flow: column;
     background: white;
+    padding: 30px;
     @media ${getMediaQuery("xs")} {
         position: fixed;
         top: 0;
@@ -24,16 +26,17 @@ const DealerName = styled(XSmallTitle)`
     margin: 0;
     padding: 0;
 `
-const DealerAffiliation = styled(CallToAction)`
+const DealerAffiliation = styled(XSmallTitle)`
     color: ${colors.red};
-    text-transform: uppercase;
+    font-size: 10px;
 `
 
 const DealerAdress = styled(Caption)`
     color: ${colors.blackDark};
 `
 
-const DealerDistance = styled.div`
+const DealerDistance = styled(CaptionBold)`
+    font-size: 12px;
     margin: 0;
     padding: 0;
     position: absolute;

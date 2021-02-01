@@ -38,6 +38,9 @@ const DealerAffiliation = styled(XSmallTitle)`
 const DealerAdress = styled(Caption)`
     color: ${colors.blackDark};
     font-size: 14px;
+    @media ${getMediaQuery("xs")} {
+        font-size: 12px;
+    }
 `
 
 const OpeningHoursSection = styled.div`
@@ -52,17 +55,28 @@ const OpeningHoursSection = styled.div`
 const todayOpeningHours = styled(Caption)`
     font-size: 14px;
     color: ${colors.blackDark};
+    @media ${getMediaQuery("xs")} {
+        font-size: 12px;
+    }
 `
 
 const OpeningHours = styled(Caption)`
     color: ${colors.blackDark};
     padding: 0;
     margin: 10px 0 0 0;
+    font-size: 14px;
+    @media ${getMediaQuery("xs")} {
+        font-size: 12px;
+    }
 `
 
 const OpeningHoursToggleLabel = styled(Caption)`
     margin: 0;
     padding: 0;
+    font-size: 14px;
+    @media ${getMediaQuery("xs")} {
+        font-size: 12px;
+    }
 `
 
 const DealerDistance = styled(CaptionBold)`
@@ -72,6 +86,10 @@ const DealerDistance = styled(CaptionBold)`
     position: absolute;
     top: 30px;
     right: 20px;
+    font-size: 14px;
+    @media ${getMediaQuery("xs")} {
+        font-size: 10px;
+    }
 `
 
 const RoundedBtn = styled.div`

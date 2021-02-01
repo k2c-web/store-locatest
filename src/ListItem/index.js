@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect, useRef } from "react"
+import Opening from "./OpeningHoursSection"
 import { MapListContext } from "../MapListContext"
 import { DropDownIcon } from "../Icon"
 import smoothscroll from "smoothscroll-polyfill"
