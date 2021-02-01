@@ -11,6 +11,7 @@ const DropDownIcon = (props) => (
         role="img"
         onClick={props.onClick}
         fill={colors.blackDark}
+        className={props.className}
     >
         <path d={"m11 3.2-5.5 5.7-5.5-5.7"} id={"down"} />
     </IconSvg>

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useEffect, useCallback } from "react"
+import React, { useContext, useCallback } from "react"
 import InfoCard from "../../InfoCard"
 import { Marker, InfoWindow } from "@react-google-maps/api"
 import { MapListContext } from "../../MapListContext"
