@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { colors } from "../style/Colors"
-import { XSmallTitle, Caption, CallToAction, CaptionBold } from "../Text"
+import { XSmallTitle, Caption, CaptionBold } from "../Text"
 import { getMediaQuery } from "../style/Breakpoint"
 
 const Root = styled.div`

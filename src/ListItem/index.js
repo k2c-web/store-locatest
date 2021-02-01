@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react"
+import React, { useContext, useEffect, useMemo, useRef } from "react"
 import Openings from "./Openings"
 import { MapListContext } from "../MapListContext"
 import smoothscroll from "smoothscroll-polyfill"
@@ -26,7 +26,7 @@ export default React.memo(function ({ item }) {
 
     useEffect(() => {
         // Scrol intoview the selected item of the list
-        if (rootRef.current && selectedFrom === "map" && dealerName === selectedRetailer.nameTranslated) {
+        if (rootRef.current && selectedFrom === "map" && dealerName.value === selectedRetailer.nameTranslated) {
             rootRef.current.scrollIntoView({ behavior: "instant", block: "start" })
         }
     }, [rootRef, selectedRetailer])
@@ -37,20 +37,20 @@ export default React.memo(function ({ item }) {
         }
     }
 
+    const selected = useMemo(() => item.dealerId === selectedRetailer.dealerId)
+
     return (
-        <Root
-            ref={rootRef}
-            onClick={handleClick}
-            selected={item.dealerId === selectedRetailer.dealerId}
-        >
+        <Root ref={rootRef} onClick={handleClick}selected={selected}>
             <FlexBox>
                 <DealerName field={dealerName} tag="h2" />
                 <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }} />
             </FlexBox>
             <DealerAffiliation  tag="div" field={dealerAffiliationLabel} />
             <DealerAdress tag="div"field={adressLabel} />
-            <FlexBox> <Openings value={item.hoursTranslated} />
-            <RoundedBtn type="plus" /></FlexBox>
+            <FlexBox>
+                <Openings value={item.hoursTranslated} />
+                <RoundedBtn type="plus" />
+            </FlexBox>
         </Root>
     )
 })

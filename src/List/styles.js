@@ -4,6 +4,7 @@ import { noScrolbarMixin } from "../style/Mixins"
 import { getMediaQuery } from "../style/Breakpoint"
 
 export const Root = styled.ul`
+    box-sizing: border-box;
     flex-flow: column;
     display: flex;
     list-style-type: none;
