@@ -61,33 +61,27 @@ const Map = () => {
 
     // Update the center ref on center change to prevent the map from moving on unselec
     const handleCenterChange = useCallback(() => {
-        const newCenter = map.getCenter()
-        refCenter.current = newCenter.toJSON()
-    })
+        if (map && map.getCenter()) {
+            const newCenter = map.getCenter()
+            refCenter.current = newCenter.toJSON()
+        }
+    }, [map])
 
     // Tmp for test / dev purpose
     const handleZoomChanged = useCallback(() => {
-        if (map) console.log(map.getZoom())
-    })
+        if (map && map.getZoom()) console.log(map.getZoom())
+    }, [map])
 
     const handleBoundsChanged = useCallback(() => {
-        if (map) {
+        if (map && map.getBounds()) {
             let ne = map.getBounds().getNorthEast()
             let sw = map.getBounds().getSouthWest()
             //console.log(ne.lat() + ";" + ne.lng())
             //console.log(sw.lat() + ";" + sw.lng())
             //console.log(map.getBounds().toJSON())
             var event = new CustomEvent("mapBoundsChanged ", { detail: map.getBounds().toJSON() })
-            window.dispatchEvent(event)
         }
-    })
-
-    /*useEffect(() => {
-        if (isBrowser) {
-            window.addEventListener("mapBoundsChanged", handleRedMark)
-            return () => window.removeEventListener("mapBoundsChanged", setHasFavorite)
-        }
-    }, [])*/
+    }, [map])
 
     const onMapClick = useCallback((e) => {
         if (e.target === e.currentTarget) {
