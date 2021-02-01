@@ -29,10 +29,12 @@ const Map = () => {
     })
 
     const [map, setMap] = React.useState(null)
-    // Use fitbounds to display a map covering all the markers
-    const onLoad = useCallback((map) => {
-        setMap(map)
-    })
+    const onLoad = useCallback(
+        (map) => {
+            setMap(map)
+        },
+        [setMap]
+    )
 
     useEffect(() => {
         if (map && retailers.length) {
@@ -50,11 +52,19 @@ const Map = () => {
         refCenter.current = newCenter.toJSON()
     })
 
-    const handleClick = useCallback((e) => {
+    const handleZoomChanged = useCallback(() => {
+        if (map) console.log(map.getZoom())
+    })
+
+    const onMapClick = useCallback((e) => {
         if (e.target === e.currentTarget) {
             selectItem({}, "map")
         }
     })
+
+    const onMarkerClick = useCallback((e, item) => selectItem(item, "map"))
+
+    const onChange = useCallback(() => console.log("changes"))
 
     return (
         <Root>
@@ -64,11 +74,11 @@ const Map = () => {
                         height: "100%",
                         width: "100%",
                     }}
-                    zoom={10}
                     onLoad={onLoad}
                     center={refCenter.current}
                     onCenterChanged={handleCenterChange}
-                    onClick={handleClick}
+                    onClick={onMapClick}
+                    onZoomChanged={handleZoomChanged}
                 >
                     {!!retailers.length &&
                         retailers.map((item) => {
@@ -83,7 +93,7 @@ const Map = () => {
                                         <InfoWindow
                                             position={{ lat: item.lat, lng: item.lng }}
                                             visible={item.dealerId === selectedRetailer.dealerId}
-                                            onCloseClick={() => selectItem({}, "close")}
+                                            onCloseClick={(e) => selectItem(e, item, "close")}
                                         >
                                             <InfoCard item={item} />
                                         </InfoWindow>
