@@ -9,6 +9,7 @@ import {
     DealerAdress,
     DealerDistance,
     RoundedBtn,
+    FlexBox
 } from "./styles"
 
 // kick off the polyfill!
@@ -42,15 +43,14 @@ export default React.memo(function ({ item }) {
             onClick={handleClick}
             selected={item.dealerId === selectedRetailer.dealerId}
         >
-            <DealerName field={dealerName} tag="h2" />
+            <FlexBox>
+                <DealerName field={dealerName} tag="h2" />
+                <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }} />
+            </FlexBox>
             <DealerAffiliation  tag="div" field={{dealerAffiliationLabel }} />
-            <DealerAdress
-                tag="div"
-                field={adressLabel}
-            />
-            <Openings value={item.hoursTranslated} />
-            <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }} />
-            <RoundedBtn  type="plus" />
+            <DealerAdress tag="div"field={adressLabel} />
+            <FlexBox> <Openings value={item.hoursTranslated} />
+            <RoundedBtn type="plus" /></FlexBox>
         </Root>
     )
 })

@@ -49,9 +49,6 @@ export const DealerDistance = styled(CaptionBold)`
     font-size: 12px;
     margin: 0;
     padding: 0;
-    position: absolute;
-    top: 30px;
-    right: 20px;
     font-size: 14px;
     @media ${getMediaQuery("xs")} {
         font-size: 10px;
@@ -59,8 +56,12 @@ export const DealerDistance = styled(CaptionBold)`
 `
 
 export const RoundedBtn = styled(RoundedIcon)`
-    position: absolute;
-    bottom: 30px;
-    right: 20px;
     cursor: pointer;
+`
+
+export const FlexBox = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: bottom;
+    justify-content:space-between;
 `
