@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { colors } from "../style/Colors"
-import { XSmallTitle, Caption,  CaptionBold } from "../Text"
+import { XSmallTitle, Caption, CaptionBold } from "../Text"
 import { getMediaQuery } from "../style/Breakpoint"
 
 import { RoundedIcon } from "../Icon/RoundedIcon"
@@ -50,6 +50,7 @@ export const DealerDistance = styled(CaptionBold)`
     margin: 0;
     padding: 0;
     font-size: 14px;
+    font-weight: bold;
     @media ${getMediaQuery("xs")} {
         font-size: 10px;
     }
@@ -63,5 +64,5 @@ export const FlexBox = styled.div`
     width: 100%;
     display: flex;
     align-items: bottom;
-    justify-content:space-between;
+    justify-content: space-between;
 `

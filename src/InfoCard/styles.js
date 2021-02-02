@@ -1,16 +1,16 @@
 import styled from "styled-components"
 import { colors } from "../style/Colors"
-import { XSmallTitle, Caption, CaptionBold } from "../Text"
+import { XSmallTitle, Caption, CaptionBold, CallToAction } from "../Text"
 import { getMediaQuery } from "../style/Breakpoint"
+import { noScrolbarMixin } from "../style/Mixins"
 
 const Root = styled.div`
     box-sizing: border-box;
     width: 276px;
-    height: 336px;
     display: flex;
     flex-flow: column;
     background: white;
-    padding: ${(props) => (props.belongsToAGroup ? "30px 30px 18px 30px" : "30px 30px")};
+    padding: ${(props) => (props.lessBottomPadding ? "30px 30px 18px 30px" : "30px 30px")};
     box-shadow: rgba(0, 0, 0, 0.3) 0px 6px 12px 0px;
     @media ${getMediaQuery("xs")} {
         position: fixed;
@@ -20,8 +20,11 @@ const Root = styled.div`
         bottom: 0;
         width: 100%;
         height: 100%;
-        align-items: center;
-        justify-content: center;
+        max-height: 100vh;
+        align-items: flex-start;
+        justify-content: flex-start;
+        overflow: hidden;
+        ${noScrolbarMixin};
     }
 `
 const CloseButtonContainer = styled.div`
@@ -33,6 +36,9 @@ const CloseButtonContainer = styled.div`
     cursor: pointer;
     @media ${getMediaQuery("xs")} {
         display: flex;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 `
 
@@ -53,10 +59,27 @@ const CloseButton = styled.button`
     font-size: 16px;
 `
 
+const FlexBox = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    @media ${getMediaQuery("xs")} {
+        margin-top: 34px;
+    }
+`
+
 const DealerName = styled(XSmallTitle)`
     margin: 0;
     padding: 0;
 `
+
+const DealerDistance = styled(CaptionBold)`
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+`
+
 const DealerAffiliation = styled(XSmallTitle)`
     color: ${colors.red};
     font-size: 10px;
@@ -65,15 +88,10 @@ const DealerAffiliation = styled(XSmallTitle)`
 const DealerAdress = styled(Caption)`
     color: ${colors.blackDark};
     margin: 0;
-    margin-bottom: 12px;
-`
-
-const DealerDistance = styled(CaptionBold)`
-    font-size: 12px;
-    margin: 0;
-    padding: 0;
-    text-align: right;
-    margin-bottom: 6px;
+    margin-bottom: 26px;
+    @media ${getMediaQuery("xs")} {
+        margin-bottom: 22px;
+    }
 `
 
 const PhoneNumber = styled.div`
@@ -91,33 +109,39 @@ const GetDirection = styled.div`
 const VisitWebsite = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 26px;
+    margin-bottom: ${(props) => (props.lessMarginBottom ? "12px" : "26px")};
+    @media ${getMediaQuery("xs")} {
+        margin-bottom: 12px;
+    }
 `
 
 const ViewDetails = styled.button`
     background: none;
+    margin: 0;
     padding: 0;
     outline: none;
     cursor: pointer;
-    display: block;
-    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: ${colors.red};
     border: 1px solid ${colors.greyMedium};
     border-radius: 25px;
     height: 34px;
+    width: 100%;
     &:hover {
         color: rgb(190, 1, 0);
+    }
+    @media ${getMediaQuery("xs")} {
+        width: 40%;
+        margin: 0 auto 26px auto;
     }
 `
 
 const ViewGroup = styled.div`
     display: flex;
     align-items: center;
-`
-
-const FlexBox = styled.div`
-    display: flex;
-    justify-content: space-between;
 `
 
 export {

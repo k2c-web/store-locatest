@@ -16,7 +16,7 @@ const Dev = styled.div`
 export default function Layout() {
     return document.location.search === "?c=infocard" ? (
         <Dev>
-            <InfoCard item={data[0]} />
+            <InfoCard hasGroup={false} item={data[0]} />
         </Dev>
     ) : (
         <Root>

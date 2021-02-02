@@ -1,7 +1,9 @@
 import React, { useContext } from "react"
 import { MapListContext } from "../MapListContext"
 import { RemoveScroll } from "react-remove-scroll"
+import MobileSection from "./MobileSection"
 
+import { XSmallTitle, Caption, CaptionBold, CallToAction } from "../Text"
 import {
     Root,
     CloseButtonContainer,
@@ -16,13 +18,11 @@ import {
     VisitWebsite,
     ViewGroup,
     FlexBox,
+    CallToActionSC,
 } from "./styles"
 import { RoundedIcon } from "../Icon/RoundedIcon"
 
-// TO DO : style if group page link is displayed
-const belongsToAGroup = false
-
-export default React.memo(function ({ item, isMobile }) {
+export default React.memo(function ({ item, isMobile = false, hasGroup = false }) {
     const { selectItem, selectedRetailer } = useContext(MapListContext)
     const dealerName = { value: item.nameTranslated }
     const dealerAffiliate = !!item.affiliate
@@ -33,11 +33,15 @@ export default React.memo(function ({ item, isMobile }) {
 
     return (
         <RemoveScroll enabled={isMobile && item.dealerId === selectedRetailer.dealerId}>
-            <Root activated={item.dealerId === selectedRetailer.dealerId} onClick={() => selectItem(item, "map")}>
+            <Root
+                lessBottomPadding={hasGroup}
+                activated={item.dealerId === selectedRetailer.dealerId}
+                onClick={() => selectItem(item, "map")}
+            >
                 <CloseButtonContainer>
                     <CloseButton>x</CloseButton>
                 </CloseButtonContainer>
-                <FlexBox>
+                <FlexBox lessMarginBottom={hasGroup}>
                     <DealerName field={dealerName} tag="h2" />
                     <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }} />
                 </FlexBox>
@@ -49,11 +53,14 @@ export default React.memo(function ({ item, isMobile }) {
                 <GetDirection>
                     <RoundedIcon type="getDirection" label={"Get Direction"} />
                 </GetDirection>
-                <VisitWebsite>
+                <VisitWebsite lessMarginBottom={hasGroup}>
                     <RoundedIcon type="externalLink" label={"Visit Website"} />
                 </VisitWebsite>
-                <ViewDetails>ViewDetails</ViewDetails>
-                {belongsToAGroup && (
+                <ViewDetails>
+                    <CallToAction underlineOff tag="span" field={{ value: "View Details" }} />
+                </ViewDetails>
+                <MobileSection />
+                {hasGroup && (
                     <ViewGroup>
                         <RoundedIcon type="arrowRight" label={"Group Page"} />
                     </ViewGroup>
