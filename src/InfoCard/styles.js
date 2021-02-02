@@ -79,8 +79,19 @@ const DealerDistance = styled(CaptionBold)`
 const PhoneNumber = styled.div`
     display: flex;
     align-items: center;
-    margin: 0;
     margin-bottom: 12px;
+`
+
+const GetDirection = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+`
+
+const VisitWebsite = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 26px;
 `
 
 const ViewDetails = styled.button`
@@ -102,17 +113,6 @@ const ViewDetails = styled.button`
 const ViewGroup = styled.div`
     display: flex;
     align-items: center;
-`
-
-const GetDirection = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-`
-const VisitWebsite = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 26px;
 `
 
 const FlexBox = styled.div`

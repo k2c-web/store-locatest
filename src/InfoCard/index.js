@@ -35,11 +35,12 @@ export default React.memo(function ({ item, isMobile }) {
         <RemoveScroll enabled={isMobile && item.dealerId === selectedRetailer.dealerId}>
             <Root activated={item.dealerId === selectedRetailer.dealerId} onClick={() => selectItem(item, "map")}>
                 <CloseButtonContainer>
-                    {" "}
-                    <CloseButton>x</CloseButton>{" "}
+                    <CloseButton>x</CloseButton>
                 </CloseButtonContainer>
-                <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }} />
-                <DealerName field={dealerName} tag="h2" />
+                <FlexBox>
+                    <DealerName field={dealerName} tag="h2" />
+                    <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }} />
+                </FlexBox>
                 <DealerAffiliation tag="div" field={dealerAffiliationLabel} />
                 <DealerAdress tag="div" field={adressLabel} />
                 <PhoneNumber>

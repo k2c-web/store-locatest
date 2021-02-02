@@ -25,6 +25,7 @@ const PhoneIcon = (props) => (
         xmlns="http://www.w3.org/2000/svg"
         role="img"
         onClick={props.onClick}
+        className={props.className}
     >
         <path
             d={
@@ -43,6 +44,7 @@ const GetDirectionIcon = (props) => (
         xmlns="http://www.w3.org/2000/svg"
         role="img"
         onClick={props.onClick}
+        className={props.className}
     >
         <path d={"m7 7.8v-2.6h-5v5.8h-2v-6.6c0-.3.1-.6.3-.9.2-.2.5-.3.9-.3h.1 5.7v-2.4l4 3.5z"} id={"get-direction"} />
     </IconSvg>
@@ -56,6 +58,7 @@ const ExternalLinkIcon = (props) => (
         xmlns="http://www.w3.org/2000/svg"
         role="img"
         onClick={props.onClick}
+        className={props.className}
     >
         <path
             d="m5.78 8h1.22v1.78 1.22h-1.22-4.56-1.22v-1.22-8.56-1.22h1.22 4.57 1.21v1.22 1.78h-1.22v-1.78h-4.56v8.57h4.57v-1.79zm4.03-3.7-1.18-1.2v1.8h-5.63v1.22h5.63v1.8l1.19-1.2 1.18-1.22z"
@@ -72,6 +75,7 @@ const PlusIcon = (props) => (
         xmlns="http://www.w3.org/2000/svg"
         role="img"
         onClick={props.onClick}
+        className={props.className}
     >
         <path d="m11 6.15h-4.85v4.85h-1.3v-4.85h-4.85v-1.3h4.85v-4.85h1.3v4.85h4.85z" id="plus" />
     </IconSvg>
@@ -85,6 +89,7 @@ const LocationIcon = (props) => (
         xmlns="http://www.w3.org/2000/svg"
         role="img"
         onClick={props.onClick}
+        className={props.className}
     >
         <path
             d="m10.5 0c-1 0-1.9.2-2.8.6-2.4 1.1-4 3.4-4 6.2v.3.3c.1 1.4.5 2.7 1.2 3.9 1 1.7 5.6 9.7 5.6 9.7s4.3-7.4 5.5-9.6c.8-1.5 1.3-2.8 1.3-4.6 0-3.7-3.1-6.8-6.8-6.8zm4.7 6.8c0 2.6-2.1 4.8-4.8 4.8s-4.7-2.2-4.7-4.8c0-2.7 2.2-4.8 4.8-4.8s4.7 2.1 4.7 4.8z"
@@ -101,6 +106,7 @@ const ArrowRight = (props) => (
         xmlns="http://www.w3.org/2000/svg"
         role="img"
         onClick={props.onClick}
+        className={props.className}
     >
         <path d="m11 5.5-4.3 4.2-1.4-1.5 1.8-1.7h-7.1v-2h7.1l-1.8-1.7 1.4-1.4z" id="location" />
     </IconSvg>
