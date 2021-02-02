@@ -4,12 +4,13 @@ import { XSmallTitle, Caption, CaptionBold } from "../Text"
 import { getMediaQuery } from "../style/Breakpoint"
 
 const Root = styled.div`
+    box-sizing: border-box;
     width: 276px;
     height: 336px;
     display: flex;
     flex-flow: column;
     background: white;
-    padding: 30px 30px 18px 30px;
+    padding: ${(props) => (props.belongsToAGroup ? "30px 30px 18px 30px" : "30px 30px")};
     box-shadow: rgba(0, 0, 0, 0.3) 0px 6px 12px 0px;
     @media ${getMediaQuery("xs")} {
         position: fixed;
@@ -84,6 +85,9 @@ const PhoneNumber = styled.div`
 
 const ViewDetails = styled.button`
     background: none;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
     display: block;
     text-align: center;
     color: ${colors.red};
@@ -111,6 +115,11 @@ const VisitWebsite = styled.div`
     margin-bottom: 26px;
 `
 
+const FlexBox = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
 export {
     Root,
     CloseButton,
@@ -124,4 +133,5 @@ export {
     GetDirection,
     VisitWebsite,
     ViewGroup,
+    FlexBox,
 }

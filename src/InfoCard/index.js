@@ -15,25 +15,29 @@ import {
     GetDirection,
     VisitWebsite,
     ViewGroup,
+    FlexBox,
 } from "./styles"
 import { RoundedIcon } from "../Icon/RoundedIcon"
-
 
 // TO DO : style if group page link is displayed
 const belongsToAGroup = false
 
 export default React.memo(function ({ item, isMobile }) {
-
     const { selectItem, selectedRetailer } = useContext(MapListContext)
-    const dealerName = {value: item.nameTranslated}
+    const dealerName = { value: item.nameTranslated }
     const dealerAffiliate = !!item.affiliate
-    const dealerAffiliationLabel = {value: dealerAffiliate ? "Official Matchbox Affiliate" : "Official Matchbox Retailer"}
-    const adressLabel = {value: "10 rue Bachaumont<br />75002 Paris"}
+    const dealerAffiliationLabel = {
+        value: dealerAffiliate ? "Official Matchbox Affiliate" : "Official Matchbox Retailer",
+    }
+    const adressLabel = { value: "10 rue Bachaumont<br />75002 Paris" }
 
     return (
         <RemoveScroll enabled={isMobile && item.dealerId === selectedRetailer.dealerId}>
             <Root activated={item.dealerId === selectedRetailer.dealerId} onClick={() => selectItem(item, "map")}>
-                <CloseButtonContainer> <CloseButton>x</CloseButton> </CloseButtonContainer>
+                <CloseButtonContainer>
+                    {" "}
+                    <CloseButton>x</CloseButton>{" "}
+                </CloseButtonContainer>
                 <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }} />
                 <DealerName field={dealerName} tag="h2" />
                 <DealerAffiliation tag="div" field={dealerAffiliationLabel} />

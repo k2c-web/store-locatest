@@ -100,6 +100,7 @@ const Map = () => {
         <Root>
             {retailers && isLoaded && (
                 <GoogleMap
+                    onTilesLoaded={() => console.log("tilesloaded")}
                     mapContainerStyle={mapContainerStyle}
                     onIdle={handleIdle}
                     onLoad={onLoad}
