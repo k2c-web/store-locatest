@@ -3,9 +3,13 @@ import { colors } from "../style/Colors/index"
 import { CallToAction } from "../Text"
 const revertibles = ["externalLink"] // RTL
 
-const Root = styled.div`
+export const Root = styled.div`
     margin: 0;
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: ${(props) => (props.marginBottomPx ? props.marginBottomPx : 0)};
 `
 
 export const IconSvg = styled.svg`
@@ -32,6 +36,8 @@ export const RoundedBtn = styled.div`
     background: ${colors.white};
     border: 1px solid ${colors.lightGrey};
     font-weight: bold;
+    ${CallToAction}&:hover {
+    }
     &:hover {
         transition: all 300ms;
         background: ${colors.red};

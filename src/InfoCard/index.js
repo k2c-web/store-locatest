@@ -12,10 +12,7 @@ import {
     DealerAffiliation,
     DealerAdress,
     DealerDistance,
-    PhoneNumber,
     ViewDetails,
-    GetDirection,
-    VisitWebsite,
     ViewGroup,
     FlexBox,
     CallToActionSC,
@@ -47,15 +44,9 @@ export default React.memo(function ({ item, isMobile = false, hasGroup = false }
                 </FlexBox>
                 <DealerAffiliation tag="div" field={dealerAffiliationLabel} />
                 <DealerAdress tag="div" field={adressLabel} />
-                <PhoneNumber>
-                    <RoundedIcon type="phone" label="Phone Number" />
-                </PhoneNumber>
-                <GetDirection>
-                    <RoundedIcon type="getDirection" label={"Get Direction"} />
-                </GetDirection>
-                <VisitWebsite lessMarginBottom={hasGroup}>
-                    <RoundedIcon type="externalLink" label={"Visit Website"} />
-                </VisitWebsite>
+                <RoundedIcon type="phone" label="Phone Number" marginBottomPx="12px" />
+                <RoundedIcon type="getDirection" label={"Get Direction"} marginBottomPx="12px" />
+                <RoundedIcon marginBottomPx={hasGroup ? "12px" : "26px"} type="externalLink" label={"Visit Website"} />
                 <ViewDetails>
                     <CallToAction underlineOff tag="span" field={{ value: "View Details" }} />
                 </ViewDetails>

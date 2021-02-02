@@ -4,7 +4,7 @@ import { XSmallTitle, Caption, CaptionBold, CallToAction } from "../Text"
 import { getMediaQuery } from "../style/Breakpoint"
 import { noScrolbarMixin } from "../style/Mixins"
 
-const Root = styled.div`
+export const Root = styled.div`
     box-sizing: border-box;
     width: 276px;
     display: flex;
@@ -27,7 +27,7 @@ const Root = styled.div`
         ${noScrolbarMixin};
     }
 `
-const CloseButtonContainer = styled.div`
+export const CloseButtonContainer = styled.div`
     height: 34px;
     width: 100%;
     display: none;
@@ -42,7 +42,7 @@ const CloseButtonContainer = styled.div`
     }
 `
 
-const CloseButton = styled.button`
+export const CloseButton = styled.button`
     border: none;
     outline: none;
     padding: 0;
@@ -59,7 +59,7 @@ const CloseButton = styled.button`
     font-size: 16px;
 `
 
-const FlexBox = styled.div`
+export const FlexBox = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -68,24 +68,24 @@ const FlexBox = styled.div`
     }
 `
 
-const DealerName = styled(XSmallTitle)`
+export const DealerName = styled(XSmallTitle)`
     margin: 0;
     padding: 0;
 `
 
-const DealerDistance = styled(CaptionBold)`
+export const DealerDistance = styled(CaptionBold)`
     font-size: 12px;
     font-weight: bold;
     margin: 0;
     padding: 0;
 `
 
-const DealerAffiliation = styled(XSmallTitle)`
+export const DealerAffiliation = styled(XSmallTitle)`
     color: ${colors.red};
     font-size: 10px;
 `
 
-const DealerAdress = styled(Caption)`
+export const DealerAdress = styled(Caption)`
     color: ${colors.blackDark};
     margin: 0;
     margin-bottom: 26px;
@@ -94,28 +94,7 @@ const DealerAdress = styled(Caption)`
     }
 `
 
-const PhoneNumber = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-`
-
-const GetDirection = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-`
-
-const VisitWebsite = styled.div`
-    display: flex;
-    align-items: center;
-    margin-bottom: ${(props) => (props.lessMarginBottom ? "12px" : "26px")};
-    @media ${getMediaQuery("xs")} {
-        margin-bottom: 12px;
-    }
-`
-
-const ViewDetails = styled.button`
+export const ViewDetails = styled.button`
     background: none;
     margin: 0;
     padding: 0;
@@ -139,23 +118,7 @@ const ViewDetails = styled.button`
     }
 `
 
-const ViewGroup = styled.div`
+export const ViewGroup = styled.div`
     display: flex;
     align-items: center;
 `
-
-export {
-    Root,
-    CloseButton,
-    CloseButtonContainer,
-    DealerAdress,
-    DealerAffiliation,
-    DealerDistance,
-    DealerName,
-    PhoneNumber,
-    ViewDetails,
-    GetDirection,
-    VisitWebsite,
-    ViewGroup,
-    FlexBox,
-}

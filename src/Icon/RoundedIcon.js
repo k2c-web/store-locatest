@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { colors } from "../style/Colors"
-import { CallToActionSC, RoundedBtn } from "./styles"
+import { Root, CallToActionSC, RoundedBtn } from "./styles"
 
 import { PhoneIcon, GetDirectionIcon, ExternalLinkIcon, LocationIcon, PlusIcon, ArrowRight } from "./"
 
@@ -14,15 +14,15 @@ const mapType = {
     arrowRight: <ArrowRight />,
 }
 
-export const RoundedIcon = ({ type = "phone", label, ...rest }) => {
+export const RoundedIcon = ({ type = "phone", label, marginBottomPx, ...rest }) => {
     return (
-        <>
+        <Root marginBottomPx={marginBottomPx}>
             <RoundedBtn {...rest}>{type && mapType[type] ? mapType[type] : <PhoneIcon />}</RoundedBtn>
             {!!label && (
-                <CallToActionSC tag="span" field={{ value: label }}>
+                <CallToActionSC underlineOff tag="span" field={{ value: label }}>
                     {label}
                 </CallToActionSC>
             )}
-        </>
+        </Root>
     )
 }
