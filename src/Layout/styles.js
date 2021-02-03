@@ -12,5 +12,8 @@ export const Root = styled.div`
         flex-flow: column-reverse;
         align-items: center;
         justify-content: center;
+        height: 100vh;
+        max-height: 100%;
+        padding: 0;
     }
 `

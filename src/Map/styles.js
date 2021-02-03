@@ -4,7 +4,7 @@ const mobileMaxWidth = `${sizes.s.max}px`
 
 export const Root = styled.div`
     @media ${getMediaQuery("xs")} {
-        height: 400px;
+        height: 206px;
         width: 100%;
         position: sticky;
         top: 0;

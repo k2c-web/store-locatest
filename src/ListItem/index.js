@@ -9,7 +9,9 @@ import {
     DealerAdress,
     DealerDistance,
     RoundedBtn,
-    FlexBox
+    TopSection,
+    FlexBox,
+    Border,
 } from "./styles"
 
 // kick off the polyfill!
@@ -19,10 +21,12 @@ export default React.memo(function ({ item }) {
     const rootRef = useRef()
     const value = useContext(MapListContext)
     const { selectItem, selectedFrom, selectedRetailer } = value
-    const dealerName = {value: item.nameTranslated}
+    const dealerName = { value: item.nameTranslated }
     const dealerAffiliate = !!item.affiliate
-    const dealerAffiliationLabel = {value: dealerAffiliate ? "Official Matchbox Affiliate" : "Official Matchbox Retailer"}
-    const adressLabel = {value: "10 rue Bachaumont<br />75002 Paris"}
+    const dealerAffiliationLabel = {
+        value: dealerAffiliate ? "Official Matchbox Affiliate" : "Official Matchbox Retailer",
+    }
+    const adressLabel = { value: "10 rue Bachaumont<br />75002 Paris" }
 
     useEffect(() => {
         // Scrol intoview the selected item of the list
@@ -40,17 +44,19 @@ export default React.memo(function ({ item }) {
     const selected = useMemo(() => item.dealerId === selectedRetailer.dealerId)
 
     return (
-        <Root ref={rootRef} onClick={handleClick}selected={selected}>
-            <FlexBox>
-                <DealerName field={dealerName} tag="h2" />
-                <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }} />
-            </FlexBox>
-            <DealerAffiliation  tag="div" field={dealerAffiliationLabel} />
-            <DealerAdress tag="div"field={adressLabel} />
-            <FlexBox>
-                <Openings value={item.hoursTranslated} />
-                <RoundedBtn type="plus" />
-            </FlexBox>
-        </Root>
+        <Border ref={rootRef} onClick={handleClick} selected={selected}>
+            <Root>
+                <TopSection>
+                    <DealerName field={dealerName} tag="h2" />
+                    <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }} />
+                </TopSection>
+                <DealerAffiliation tag="div" field={dealerAffiliationLabel} />
+                <DealerAdress tag="div" field={adressLabel} />
+                <FlexBox>
+                    <Openings value={item.hoursTranslated} />
+                    <RoundedBtn type="plus" />
+                </FlexBox>
+            </Root>
+        </Border>
     )
 })

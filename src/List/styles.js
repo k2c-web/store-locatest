@@ -14,6 +14,7 @@ export const Root = styled.ul`
     @media ${getMediaQuery("xs")} {
         width: 100%;
         height: 100%;
+        margin: 0;
     }
     @media ${getMediaQuery("m")}, ${getMediaQuery("l")}, ${getMediaQuery("xl")}, ${getMediaQuery("s")} {
         height: 100%;

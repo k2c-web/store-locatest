@@ -2,9 +2,16 @@ import styled from "styled-components"
 import { colors } from "../style/Colors"
 import { XSmallTitle, Caption, CaptionBold } from "../Text"
 import { getMediaQuery } from "../style/Breakpoint"
-
 import { RoundedIcon } from "../Icon/RoundedIcon"
 
+export const Border = styled.div`
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-bottom: 4px solid rgb(190, 1, 0);
+    background-color: ${(props) => (props.selected ? colors.lightGrey : colors.white)};
+    border-color: ${(props) => (props.selected ? colors.red : colors.greyMedium)};
+`
 export const Root = styled.li`
     box-sizing: border-box;
     position: relative;
@@ -14,12 +21,9 @@ export const Root = styled.li`
     align-items: flex-start;
     padding: 30px 20px;
     width: 100%;
-    border-bottom: 4px solid rgb(190, 1, 0);
-    background-color: ${(props) => (props.selected ? colors.lightGrey : colors.white)};
-    border-color: ${(props) => (props.selected ? colors.red : colors.greyMedium)};
     cursor: pointer;
     color: ${colors.blackDark};
-    transition: border 300ms;
+    transition: all 300ms;
     &:hover {
         background-color: ${colors.lightGrey};
     }
@@ -61,6 +65,17 @@ export const RoundedBtn = styled(RoundedIcon)`
 `
 
 export const FlexBox = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: bottom;
+    justify-content: space-between;
+
+    @media ${getMediaQuery("xs")} {
+        align-items: baseline;
+    }
+`
+
+export const TopSection = styled.div`
     width: 100%;
     display: flex;
     align-items: bottom;

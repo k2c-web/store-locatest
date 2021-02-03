@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { colors } from "../style/Colors/index"
 import { CallToAction } from "../Text"
+import { getMediaQuery } from "../style/Breakpoint"
 const revertibles = ["externalLink"] // RTL
 
 export const Root = styled.div`
@@ -8,8 +9,11 @@ export const Root = styled.div`
     padding: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     margin-bottom: ${(props) => (props.marginBottomPx ? props.marginBottomPx : 0)};
+    @media ${getMediaQuery("xs")} {
+        justify-content: center;
+    }
 `
 
 export const IconSvg = styled.svg`
