@@ -1,13 +1,10 @@
-import React, { useContext, useCallback } from "react"
+import React, { useContext } from "react"
 import InfoCard from "../../InfoCard"
 import { Marker, InfoWindow } from "@react-google-maps/api"
 import { MapListContext } from "../../MapListContext"
 
 const Markers = ({ isMobile }) => {
     const { retailers, selectedRetailer, selectItem } = useContext(MapListContext)
-
-    // On Click of a marker on the map update machine context to select the retailer
-    const onMarkerClick = useCallback((e, item) => selectItem(item, "map"))
 
     return (
         retailers.length > 0 &&

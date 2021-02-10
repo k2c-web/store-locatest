@@ -1,6 +1,5 @@
 import React from "react"
 import { IconSvg } from "./styles"
-import { colors } from "../style/Colors"
 
 const DropDownIcon = (props) => (
     <IconSvg
@@ -10,7 +9,7 @@ const DropDownIcon = (props) => (
         xmlns="http://www.w3.org/2000/svg"
         role="img"
         onClick={props.onClick}
-        fill={colors.blackDark}
+        fill={"black"}
         className={props.className}
     >
         <path d={"m11 3.2-5.5 5.7-5.5-5.7"} id={"down"} />

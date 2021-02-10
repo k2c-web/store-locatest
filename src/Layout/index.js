@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React from "react"
 import Loader from "./Loader"
 import List from "../List"
 import Map from "../Map"

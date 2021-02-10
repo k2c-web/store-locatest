@@ -1,5 +1,5 @@
 import { createMachine, invoke, state, transition, guard, reduce } from "robot3"
-import datas from "./Datas"
+import { dummy } from "./Datas"
 
 const wait = (duration) => {
     return new Promise((resolve) => {
@@ -15,7 +15,7 @@ export default createMachine(
         loading: invoke(
             async () => {
                 await wait(300)
-                return datas
+                return dummy
             },
             transition(
                 "done",

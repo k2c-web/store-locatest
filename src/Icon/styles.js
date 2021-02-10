@@ -1,7 +1,5 @@
 import styled from "styled-components"
-import { colors } from "../style/Colors/index"
 import { CallToAction } from "../Text"
-import { getMediaQuery } from "../style/Breakpoint"
 const revertibles = ["externalLink"] // RTL
 
 export const Root = styled.div`
@@ -11,13 +9,13 @@ export const Root = styled.div`
     align-items: center;
     justify-content: flex-start;
     margin-bottom: ${(props) => (props.marginBottomPx ? props.marginBottomPx : 0)};
-    @media ${getMediaQuery("xs")} {
+    @media screen and (max-width: 768px) {
         justify-content: center;
     }
 `
 
 export const IconSvg = styled.svg`
-    fill: ${(props) => (props.fill ? props.fill : colors.red)};
+    fill: ${(props) => (props.fill ? props.fill : "steelblue")};
     [dir="rtl"] && {
         transform: scale(${({ name }) => (!!~revertibles.indexOf(name) ? "-1, 1" : "1, 1")});
     }
@@ -37,14 +35,14 @@ export const RoundedBtn = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: ${colors.white};
-    border: 1px solid ${colors.lightGrey};
+    background: white;
+    border: 1px solid silver;
     font-weight: bold;
     ${CallToAction}&:hover {
     }
     &:hover {
         transition: all 300ms;
-        background: ${colors.red};
+        background: steelblue;
         svg {
             fill: rgb(250, 250, 250);
         }

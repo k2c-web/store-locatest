@@ -10,7 +10,7 @@ const Root = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #be0100;
+    background-color: steelblue;
     color: white;
     display: flex;
     align-items: center;
@@ -19,5 +19,11 @@ const Root = styled.div`
 export default React.memo(function () {
     const { displayLoader, init } = useContext(MapListContext)
     useEffect(() => init(), [displayLoader, init]) // Init the finite stat machine and retrieve datas
-    return displayLoader && <Root><h1>Loading...</h1></Root>
+    return (
+        displayLoader && (
+            <Root>
+                <h1>Loading...</h1>
+            </Root>
+        )
+    )
 })

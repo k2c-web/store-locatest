@@ -2,17 +2,7 @@ import React, { useContext, useEffect, useMemo, useRef } from "react"
 import Openings from "./Openings"
 import { MapListContext } from "../MapListContext"
 import smoothscroll from "smoothscroll-polyfill"
-import {
-    Root,
-    DealerName,
-    DealerAffiliation,
-    DealerAdress,
-    DealerDistance,
-    RoundedBtn,
-    TopSection,
-    FlexBox,
-    Border,
-} from "./styles"
+import { Root, Name, Adress, FlexBox, Border } from "./styles"
 
 // kick off the polyfill!
 smoothscroll.polyfill()
@@ -21,17 +11,15 @@ export default React.memo(function ({ item }) {
     const rootRef = useRef()
     const value = useContext(MapListContext)
     const { selectItem, selectedFrom, selectedRetailer } = value
-    const dealerName = { value: item.nameTranslated }
-    const dealerAffiliate = !!item.affiliate
-    const dealerAffiliationLabel = {
-        value: dealerAffiliate ? "Official Matchbox Affiliate" : "Official Matchbox Retailer",
-    }
-    const adressLabel = { value: "10 rue Bachaumont<br />75002 Paris" }
 
     useEffect(() => {
         // Scrol intoview the selected item of the list
-        if (rootRef.current && selectedFrom === "map" && dealerName.value === selectedRetailer.nameTranslated) {
-            rootRef.current.scrollIntoView({ behavior: "instant", block: "start" })
+        if (
+            rootRef.current &&
+            selectedFrom === "map" &&
+            item.nameTranslated.value === selectedRetailer.nameTranslated
+        ) {
+            rootRef.current.scrollIntoView({ behavior: "smooth", block: "start" })
         }
     }, [rootRef, selectedRetailer])
 
@@ -46,15 +34,14 @@ export default React.memo(function ({ item }) {
     return (
         <Border ref={rootRef} onClick={handleClick} selected={selected}>
             <Root>
-                <TopSection>
-                    <DealerName field={dealerName} tag="h2" />
-                    <DealerDistance tag="div" field={{ value: item.dealerId / 100 + " km" }} />
-                </TopSection>
-                <DealerAffiliation tag="div" field={dealerAffiliationLabel} />
-                <DealerAdress tag="div" field={adressLabel} />
+                <Name>{item.nameTranslated}</Name>
+                <Adress>
+                    11 rue Saint-Hubert
+                    <br />
+                    77500 Chelles
+                </Adress>
                 <FlexBox>
                     <Openings value={item.hoursTranslated} />
-                    <RoundedBtn type="plus" />
                 </FlexBox>
             </Root>
         </Border>

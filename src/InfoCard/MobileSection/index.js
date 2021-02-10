@@ -1,5 +1,5 @@
 import React from "react"
-import { Root, Title, FlexBox, OpeningHours } from "./styles"
+import { Root, Title, OpeningHours } from "./styles"
 
 export default React.memo(function ({ item, isMobile = false, hasGroup = false }) {
     return (

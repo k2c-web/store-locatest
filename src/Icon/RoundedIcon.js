@@ -1,6 +1,4 @@
 import React from "react"
-import styled from "styled-components"
-import { colors } from "../style/Colors"
 import { Root, CallToActionSC, RoundedBtn } from "./styles"
 
 import { PhoneIcon, GetDirectionIcon, ExternalLinkIcon, LocationIcon, PlusIcon, ArrowRight } from "./"

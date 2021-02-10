@@ -1,11 +1,9 @@
 import styled from "styled-components"
-import { XSmallTitle, Caption, CaptionBold } from "../../Text"
-import { getMediaQuery, sizes } from "../../style/Breakpoint"
-import { colors } from "../../style/Colors"
+import { Caption } from "../../Text"
 
 export const Root = styled.div`
     display: none;
-    @media ${getMediaQuery("xs")} {
+    @media screen and (max-width: 768px) {
         display: block;
     }
 `

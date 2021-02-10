@@ -1,5 +1,4 @@
 import { css } from "styled-components"
-import { colors } from "../Colors"
 
 export const noScrolbarMixin = css`
     overflow: hidden;
@@ -25,7 +24,7 @@ export const rounderBtn = `
     height: 45px;
     z-index: 2;
     border-radius: 0;
-    background-color: ${colors.red};
+    background-color: steelblue;
     cursor: pointer;
 
     &:enabled {

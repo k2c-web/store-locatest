@@ -1,7 +1,5 @@
 import styled from "styled-components"
-import { colors } from "../style/Colors"
-import { XSmallTitle, Caption, CaptionBold, CallToAction } from "../Text"
-import { getMediaQuery } from "../style/Breakpoint"
+import { XSmallTitle, Caption } from "../Text"
 import { noScrolbarMixin } from "../style/Mixins"
 
 export const Root = styled.div`
@@ -12,7 +10,7 @@ export const Root = styled.div`
     background: white;
     padding: ${(props) => (props.lessBottomPadding ? "30px 30px 18px 30px" : "30px 30px")};
     box-shadow: rgba(0, 0, 0, 0.3) 0px 6px 12px 0px;
-    @media ${getMediaQuery("xs")} {
+    @media screen and (max-width: 768px) {
         position: fixed;
         top: 0;
         left: 0;
@@ -34,7 +32,7 @@ export const CloseButtonContainer = styled.div`
     align-items: center;
     justify-content: flex-end;
     cursor: pointer;
-    @media ${getMediaQuery("xs")} {
+    @media screen and (max-width: 768px) {
         display: flex;
         position: absolute;
         top: 0;
@@ -52,8 +50,8 @@ export const CloseButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: ${colors.red};
-    color: ${colors.white};
+    background: steelblue;
+    color: white;
     cursor: pointer;
     font-weight: bold;
     font-size: 16px;
@@ -63,7 +61,7 @@ export const FlexBox = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
-    @media ${getMediaQuery("xs")} {
+    @media screen and (max-width: 768px) {
         margin-top: 34px;
     }
 `
@@ -73,23 +71,10 @@ export const DealerName = styled(XSmallTitle)`
     padding: 0;
 `
 
-export const DealerDistance = styled(CaptionBold)`
-    font-size: 12px;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-`
-
-export const DealerAffiliation = styled(XSmallTitle)`
-    color: ${colors.red};
-    font-size: 10px;
-`
-
 export const DealerAdress = styled(Caption)`
-    color: ${colors.blackDark};
     margin: 0;
     margin-bottom: 26px;
-    @media ${getMediaQuery("xs")} {
+    @media screen and (max-width: 768px) {
         margin-bottom: 22px;
     }
 `
@@ -104,15 +89,15 @@ export const ViewDetails = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${colors.red};
-    border: 1px solid ${colors.greyMedium};
+    color: steelblue;
+    border: 1px solid silver;
     border-radius: 25px;
     height: 34px;
     width: 100%;
     &:hover {
         color: rgb(190, 1, 0);
     }
-    @media ${getMediaQuery("xs")} {
+    @media screen and (max-width: 768px) {
         width: 40%;
         margin: 0 auto 26px auto;
     }

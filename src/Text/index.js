@@ -1,5 +1,4 @@
-import React, { dangerouslySetInnerHTML } from "react"
-import { colors } from "../style/Colors"
+import React from "react"
 import styled, { css } from "styled-components"
 
 const TdrText = (props) => {
@@ -38,7 +37,6 @@ export const BigTitleCss = css`
     }
     text-transform: uppercase;
     line-height: 1.1em;
-    color: ${colors.blackDark};
 `
 
 export const MediumTitleCss = css`
@@ -53,7 +51,6 @@ export const MediumTitleCss = css`
     }
     text-transform: uppercase;
     line-height: 1.1em;
-    color: ${colors.blackDark};
 `
 
 export const SmallTitleCss = css`
@@ -67,7 +64,6 @@ export const SmallTitleCss = css`
     }
     text-transform: uppercase;
     line-height: 1.1em;
-    color: ${colors.blackDark};
 `
 
 export const XSmallTitleCss = css`
@@ -81,7 +77,7 @@ export const XSmallTitleCss = css`
     }
     text-transform: uppercase;
     line-height: 1.1em;
-    color: ${colors.blackDark};
+
     -webkit-text-stroke: 0.2px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -101,7 +97,6 @@ export const ParagraphCss = css`
     line-height: 1.6em;
     font-weight: 200;
     letter-spacing: 0.05em;
-    color: ${colors.blackDark};
 `
 
 export const ParagraphBoldCss = css`
@@ -116,7 +111,6 @@ export const ParagraphBoldCss = css`
     line-height: 1.6em;
     font-weight: 400;
     letter-spacing: 0.05em;
-    color: ${colors.blackDark};
 `
 
 export const CaptionCss = css`
@@ -131,7 +125,6 @@ export const CaptionCss = css`
     line-height: 1.4em;
     font-weight: 200;
     letter-spacing: 0.05em;
-    color: ${colors.blackDark};
 `
 
 export const CaptionBoldCss = css`
@@ -146,7 +139,6 @@ export const CaptionBoldCss = css`
     line-height: 1.6em;
     font-weight: 400;
     letter-spacing: 0.05em;
-    color: ${colors.blackDark};
 `
 
 export const BloquoteCss = css`
@@ -161,7 +153,6 @@ export const BloquoteCss = css`
     line-height: 1.6em;
     font-weight: 200;
     letter-spacing: 0.15em;
-    color: ${colors.blackDark};
 `
 
 export const LabelBigCss = css`
@@ -177,7 +168,6 @@ export const LabelBigCss = css`
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: ${colors.blackDark};
 `
 
 export const LabelSmallCss = css`
@@ -192,7 +182,6 @@ export const LabelSmallCss = css`
     line-height: 1.6em;
     font-weight: 600;
     letter-spacing: 0.05em;
-    color: ${colors.blackDark};
 `
 
 export const CallToActionCss = css`
@@ -209,7 +198,7 @@ export const CallToActionCss = css`
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: ${colors.red};
+    color: steelblue;
     max-width: max-content;
     display: block;
     background: transparent;
@@ -221,7 +210,7 @@ export const CallToActionCss = css`
         display: block;
         width: 0;
         height: 2px;
-        background: ${colors.red};
+        background: steelblue;
         transition: width 0.3s;
     }
     @media (hover: hover) {
@@ -244,7 +233,7 @@ export const CallToActionLightCss = css`
     font-weight: 200;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: ${colors.white};
+    color: white;
 `
 
 export const StyledLinkCss = css`
@@ -259,7 +248,6 @@ export const StyledLinkCss = css`
     line-height: 1.4em;
     font-weight: 400;
     letter-spacing: 0.05em;
-    color: ${colors.blackDark};
 `
 
 export const BigTitle = styled(TdrText)`
