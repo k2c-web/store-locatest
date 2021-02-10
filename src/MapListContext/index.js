@@ -6,10 +6,10 @@ export const MapListContext = React.createContext({})
 
 export default function MapListContextProvider({ children }) {
     const [state, send, context] = useMachine(machine)
-    const init = () => send("fetch")
+    const init = () => send({ type: "fetch" })
     const selectItem = useCallback(
         (item, selectedFrom) => {
-            send("click", { selectedFrom, ...item }) // If the item clicked is aready active reset state
+            send({ type: "click", selectedFrom, selectedRetailer: item })
         },
         [send]
     )

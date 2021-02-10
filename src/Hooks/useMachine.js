@@ -13,8 +13,8 @@ export function useMachine(machine) {
     const [context, setContext] = useState(service.context)
 
     const send = useCallback(
-        function (type, params = {}) {
-            service.send({ type: type, ...params })
+        function ({ type, ...params }) {
+            service.send({ type, ...params })
         },
         [service]
     )
