@@ -27,10 +27,15 @@ export default createMachine(
             transition(
                 "click",
                 "loaded",
-                guard((ctx, ev) => ctx.selectedRetailer.dealerId !== ev.dealerId),
+                guard(
+                    (ctx, ev) =>
+                        ev.selectedRetailer &&
+                        ev.selectedRetailer.dealerId &&
+                        ctx.selectedRetailer.dealerId !== ev.selectedRetailer.dealerId
+                ),
                 reduce((ctx, ev) => ({
                     ...ctx,
-                    selectedRetailer: ev,
+                    selectedRetailer: ev.selectedRetailer,
                     selectedFrom: ev.selectedFrom,
                 }))
             ),

@@ -9,11 +9,12 @@ export default function MapListContextProvider({ children }) {
     const init = () => send({ type: "fetch" })
     const selectItem = useCallback(
         (item, selectedFrom) => {
+            console.log({ type: "click", selectedFrom, selectedRetailer: item })
             send({ type: "click", selectedFrom, selectedRetailer: item })
         },
         [send]
     )
-
+    console.log(state, context)
     const displayLoader = useMemo(() => context.retailers.length <= 0, [context.retailers])
 
     const value = {
