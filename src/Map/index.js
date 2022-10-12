@@ -3,7 +3,6 @@ import InfoCard from "../InfoCard"
 import { GoogleMap, useLoadScript } from "@react-google-maps/api"
 import { MapListContext } from "../MapListContext"
 import { Root } from "./styles"
-import { sizes } from "../style/Breakpoint"
 import Markers from "./Markers"
 
 const mobileMaxWidth = `768px`
