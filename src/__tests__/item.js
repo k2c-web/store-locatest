@@ -46,7 +46,6 @@ describe("Component <Item />", () => {
     })
 
     it("should use custom step when incrementing", () => {
-        const { result } = renderHook(() => useContext(() => selectItem(data[0]), { wrapper })
-    console.log(result)
+        const { result } = renderHook(() => useContext(() => selectItem(data[0]), { wrapper }))
     })
 })
